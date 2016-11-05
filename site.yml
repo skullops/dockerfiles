@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  vars:
+    docker_organization: wizdevops
   pre_tasks:
     - name: install docker-py
       become: true
@@ -31,22 +33,22 @@
           VCS_REF: "{{ vcs_ref.stdout }}"
       with_items:
         - { context: ./base_alpine,
-            image: dminca/alpine,
+            image: "{{ docker_organization }}/alpine",
             tag: base,
             version: 1.0.0 }
         - { context: ./python/3,
-            image: dminca/python,
+            image: "{{ docker_organization }}/python",
             tag: 3-alpine,
             version: 1.0.0 }
         - { context: ./python/2.7,
-            image: dminca/python,
+            image: "{{ docker_organization }}/python",
             tag: 2.7-alpine,
             version: 1.0.0 }
         - { context: ./drupal/alpine,
-            image: dminca/drupal,
+            image: "{{ docker_organization }}/drupal",
             tag: 8-alpine,
             version: 1.0.0 }
         - { context: ./drupal/debian,
-            image: dminca/drupal,
+            image: "{{ docker_organization }}/drupal",
             tag: 8-debian,
             version: 1.0.0 }
