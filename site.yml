@@ -9,13 +9,15 @@
         state: present
   tasks:
     - name: grab the vcs-url
-      git_config: 
-        name: remote.origin.url
-        scope: local
-        repo: "{{ ansible_user_dir }}/Repositories/open-source/containerschiff"
+      command: git config --get remote.origin.url
       register: vcs_url
 
-    - debug: var=vcs_url
+    - name: grab the vcs-ref
+      command: git rev-parse --short HEAD
+      register: vcs_ref
+
+    - debug: var=vcs_url.stdout
+    - debug: var=vcs_ref.stdout
 
     # - name: grab the vcs-ref
     #   command: 
