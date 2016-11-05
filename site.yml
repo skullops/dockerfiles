@@ -43,7 +43,7 @@
         - { context: ./python/2.7,
             image: "{{ docker_organization }}/python",
             tag: 2.7-alpine,
-            version: 1.0.0 }
+            version: 1.0.1 }
         - { context: ./drupal/alpine,
             image: "{{ docker_organization }}/drupal",
             tag: 8-alpine,

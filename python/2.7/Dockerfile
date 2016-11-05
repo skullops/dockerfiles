@@ -19,3 +19,16 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
       io.github.dminca.license="GPLv3"
+RUN set -x \
+      && apk add --update --no-cache \
+      musl \
+      linux-headers \
+      build-base \
+      ca-certificates \
+      python2 \
+      python2-dev \
+      py-setuptools \
+      && python2 -m ensurepip \
+      && rm -r /usr/lib/python*/ensurepip \
+      && pip install --upgrade pip setuptools virtualenv \
+      && rm -r /root/.cache
