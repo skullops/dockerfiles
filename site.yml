@@ -47,7 +47,7 @@
         - { context: ./drupal/alpine,
             image: "{{ docker_organization }}/drupal",
             tag: 8-alpine,
-            version: 1.0.0 }
+            version: 1.0.1 }
         - { context: ./drupal/debian,
             image: "{{ docker_organization }}/drupal",
             tag: 8-debian,
