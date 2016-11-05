@@ -10,47 +10,40 @@
   tasks:
     - name: grab the vcs-url
       command: git config --get remote.origin.url
-      register: vcs_url
+      register: vcs_url # now I can use vcs_url.stdout
 
     - name: grab the vcs-ref
       command: git rev-parse --short HEAD
-      register: vcs_ref
+      register: vcs_ref # now I can use vcs_ref.stdout
 
-    - debug: var=vcs_url.stdout
-    - debug: var=vcs_ref.stdout
-
-    # - name: grab the vcs-ref
-    #   command: 
-    #   register: vcs_ref
-
-    # - name: build images and push to docker cloud
-    #   docker_image:
-    #     path: "{{ item.context }}"
-    #     name: "{{ item.image }}"
-    #     tag: "{{ item.tag }}"
-    #     build_args:
-    #       BUILD_DATE: "{{ ansible_date_time.iso8601 }}"
-    #       VERSION: "{{ item.version }}"
-    #       VCS_URL: 
-    #       VCS_REF: 
-    #   with_items:
-    #     - { context: ./base_alpine, 
-    #         image: dminca/alpine, 
-    #         tag: base,
-    #         version: 1.0.0 }
-    #     - { context: ./python/3, 
-    #         image: dminca/python, 
-    #         tag: 3-alpine,
-    #         version: 1.0.0 }
-    #     - { context: ./python/2.7, 
-    #         image: dminca/python, 
-    #         tag: 2.7-alpine,
-    #         version: 1.0.0 }
-    #     - { context: ./drupal/alpine, 
-    #         image: dminca/drupal, 
-    #         tag: 8-alpine,
-    #         version: 1.0.0 }
-    #     - { context: ./drupal/debian, 
-    #         image: dminca/drupal, 
-    #         tag: 8-debian,
-    #         version: 1.0.0 }
+    - name: build images and push to docker cloud
+      docker_image:
+        path: "{{ item.context }}"
+        name: "{{ item.image }}"
+        tag: "{{ item.tag }}"
+        build_args:
+          BUILD_DATE: "{{ ansible_date_time.iso8601 }}"
+          VERSION: "{{ item.version }}"
+          VCS_URL: "{{ vcs_url.stdout }}"
+          VCS_REF: "{{ vcs_ref.stdout }}"
+      with_items:
+        - { context: ./base_alpine,
+            image: dminca/alpine,
+            tag: base,
+            version: 1.0.0 }
+        - { context: ./python/3,
+            image: dminca/python,
+            tag: 3-alpine,
+            version: 1.0.0 }
+        - { context: ./python/2.7,
+            image: dminca/python,
+            tag: 2.7-alpine,
+            version: 1.0.0 }
+        - { context: ./drupal/alpine,
+            image: dminca/drupal,
+            tag: 8-alpine,
+            version: 1.0.0 }
+        - { context: ./drupal/debian,
+            image: dminca/drupal,
+            tag: 8-debian,
+            version: 1.0.0 }
