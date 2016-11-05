@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   vars:
     docker_organization: wizdevops
   pre_tasks:
@@ -12,11 +13,11 @@
   tasks:
     - name: grab the vcs-url
       command: git config --get remote.origin.url
-      register: vcs_url # now I can use vcs_url.stdout
+      register: vcs_url
 
     - name: grab the vcs-ref
       command: git rev-parse --short HEAD
-      register: vcs_ref # now I can use vcs_ref.stdout
+      register: vcs_ref
 
     - name: build images and push to docker cloud
       docker_image:
