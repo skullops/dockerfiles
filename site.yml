@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: build images and push to docker cloud
+      docker_image:
+        path: "{{ item.context }}"
+        name: "{{ item.image }}"
+        tag: "{{ item.tag }}"
+      with_items:
+        - { context: ./base_alpine, image: dminca/alpine, tag: base }
+        - { context: ./python/3, image: dminca/python, tag: 3-alpine }
