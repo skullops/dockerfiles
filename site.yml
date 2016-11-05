@@ -16,3 +16,6 @@
       with_items:
         - { context: ./base_alpine, image: dminca/alpine, tag: base }
         - { context: ./python/3, image: dminca/python, tag: 3-alpine }
+        - { context: ./python/2.7, image: dminca/python, tag: 2.7-alpine }
+        - { context: ./drupal/alpine, image: dminca/drupal, tag: 8-alpine }
+        - { context: ./drupal/debian, image: dminca/drupal, tag: 8-debian }
