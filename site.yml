@@ -21,6 +21,8 @@
         path: "{{ item.context }}"
         name: "{{ item.image }}"
         tag: "{{ item.tag }}"
+        state: present
+        push: true
         rm: true
         buildargs:
           BUILD_DATE: "{{ ansible_date_time.iso8601 }}"
