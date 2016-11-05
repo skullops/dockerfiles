@@ -4,7 +4,7 @@
 Images are build from Alpine Linux (edge, with latest updates), and the good old
 lazy Ubuntu...
 
-The images are build and pushed on cloud.docker.com under the `wizdevops`
+The images are build and pushed on store.docker.com under the `wizdevops`
 organization:
 
 - `wizdevops/drupal:8-alpine` [1][1]
