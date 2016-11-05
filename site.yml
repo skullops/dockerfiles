@@ -6,16 +6,49 @@
       become_method: sudo
       pip: 
         name: docker-py
-        state: latest
+        state: present
   tasks:
-    - name: build images and push to docker cloud
-      docker_image:
-        path: "{{ item.context }}"
-        name: "{{ item.image }}"
-        tag: "{{ item.tag }}"
-      with_items:
-        - { context: ./base_alpine, image: dminca/alpine, tag: base }
-        - { context: ./python/3, image: dminca/python, tag: 3-alpine }
-        - { context: ./python/2.7, image: dminca/python, tag: 2.7-alpine }
-        - { context: ./drupal/alpine, image: dminca/drupal, tag: 8-alpine }
-        - { context: ./drupal/debian, image: dminca/drupal, tag: 8-debian }
+    - name: grab the vcs-url
+      git_config: 
+        name: remote.origin.url
+        scope: local
+        repo: "{{ ansible_user_dir }}/Repositories/open-source/containerschiff"
+      register: vcs_url
+
+    - debug: var=vcs_url
+
+    # - name: grab the vcs-ref
+    #   command: 
+    #   register: vcs_ref
+
+    # - name: build images and push to docker cloud
+    #   docker_image:
+    #     path: "{{ item.context }}"
+    #     name: "{{ item.image }}"
+    #     tag: "{{ item.tag }}"
+    #     build_args:
+    #       BUILD_DATE: "{{ ansible_date_time.iso8601 }}"
+    #       VERSION: "{{ item.version }}"
+    #       VCS_URL: 
+    #       VCS_REF: 
+    #   with_items:
+    #     - { context: ./base_alpine, 
+    #         image: dminca/alpine, 
+    #         tag: base,
+    #         version: 1.0.0 }
+    #     - { context: ./python/3, 
+    #         image: dminca/python, 
+    #         tag: 3-alpine,
+    #         version: 1.0.0 }
+    #     - { context: ./python/2.7, 
+    #         image: dminca/python, 
+    #         tag: 2.7-alpine,
+    #         version: 1.0.0 }
+    #     - { context: ./drupal/alpine, 
+    #         image: dminca/drupal, 
+    #         tag: 8-alpine,
+    #         version: 1.0.0 }
+    #     - { context: ./drupal/debian, 
+    #         image: dminca/drupal, 
+    #         tag: 8-debian,
+    #         version: 1.0.0 }
