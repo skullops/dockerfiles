@@ -7,17 +7,14 @@ lazy Ubuntu...
 The images are build and pushed on hub.docker.com under the `dminca`
 organization:
 
-- [dminca/drupal-alpine][1]
-- [dminca/alpine][2]
-- [dminca/python][3]
-- [completit/alpine-python3][4]
-- [completit/dockerized-drupal][5]
-  - `latest` (based from Ubuntu, with Drupal Console)
-  - `alpine` (based from Alpine Linux, with Drupal Console)
+- [dminca/drupal:8-alpine][1]
+- [dminca/drupal:8-debian][1]
+- [dminca/python:2.7-alpine][1]
+- [dminca/python:3-alpine][1]
+- [dminca/alpine:base][1]
 
-
-[1]: https://hub.docker.com/r/dminca/drupal-alpine/
-[2]: https://hub.docker.com/r/dminca/alpine/
-[3]: https://hub.docker.com/r/dminca/python/
-[4]: https://hub.docker.com/r/completit/alpine-pyhon3/
-[5]: https://hub.docker.com/r/completit/dockerized-drupal/tags/
+[1]: https://cloud.docker.com/r/dminca/drupal:8-alpine
+[2]: https://cloud.docker.com/r/dminca/drupal:8-debian
+[3]: https://cloud.docker.com/r/dminca/python:2.7-alpine
+[4]: https://cloud.docker.com/r/dminca/python:3-alpine
+[5]: https://cloud.docker.com/r/dminca/alpine:base
