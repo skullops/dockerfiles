@@ -59,10 +59,5 @@ RUN ln -s /usr/bin/php7 /usr/bin/php
 COPY files/default.conf /etc/nginx/conf.d/
 COPY files/nginx.conf /etc/nginx/nginx.conf
 COPY files/supervisord.conf /etc/supervisord.conf
-# install Drupal Console
-RUN php -r "readfile('https://drupalconsole.com/installer');" > drupal.phar \
-    && mv drupal.phar /usr/local/bin/drupal \
-    && chmod +x /usr/local/bin/drupal \
-    && drupal init --override
 EXPOSE 80 443
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]
