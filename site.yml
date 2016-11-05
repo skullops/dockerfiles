@@ -34,8 +34,8 @@
       with_items:
         - { context: ./base_alpine,
             image: "{{ docker_organization }}/alpine",
-            tag: base,
-            version: 1.0.0 }
+            tag: latest,
+            version: 1.0.1 }
         - { context: ./python/3,
             image: "{{ docker_organization }}/python",
             tag: 3-alpine,
