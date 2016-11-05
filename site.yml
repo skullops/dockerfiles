@@ -1,5 +1,12 @@
 ---
 - hosts: all
+  pre_tasks:
+    - name: install docker-py
+      become: true
+      become_method: sudo
+      pip: 
+        name: docker-py
+        state: latest
   tasks:
     - name: build images and push to docker cloud
       docker_image:
