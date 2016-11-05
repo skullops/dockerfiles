@@ -21,6 +21,7 @@
         path: "{{ item.context }}"
         name: "{{ item.image }}"
         tag: "{{ item.tag }}"
+        rm: true
         buildargs:
           BUILD_DATE: "{{ ansible_date_time.iso8601 }}"
           VERSION: "{{ item.version }}"
