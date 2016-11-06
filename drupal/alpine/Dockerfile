@@ -1,4 +1,4 @@
-FROM dminca/alpine
+FROM wizdevops/alpine
 MAINTAINER Minca Daniel Andrei <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE

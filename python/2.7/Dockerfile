@@ -1,4 +1,4 @@
-FROM dminca/alpine
+FROM wizdevops/alpine
 # Metadata params
 ARG BUILD_DATE
 ARG VERSION
@@ -29,6 +29,6 @@ RUN set -x \
       python2-dev \
       py-setuptools \
       && python2 -m ensurepip \
-      && rm -r /usr/lib/python*/ensurepip \
+      && rm -rv /usr/lib/python*/ensurepip \
       && pip install --upgrade pip setuptools virtualenv \
-      && rm -r /root/.cache
+      && rm -rv /root/.cache
