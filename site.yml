@@ -25,6 +25,7 @@
         name: "{{ item.image }}"
         tag: "{{ item.tag }}"
         state: present
+        force: true
         push: true
         rm: true
         buildargs:
