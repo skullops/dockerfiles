@@ -12,7 +12,9 @@ organization:
 - `wizdevops/python:2.7-alpine` [2][2]
 - `wizdevops/python:3-alpine` [2][2]
 - `wizdevops/alpine:latest` [3][3]
+- `wizdevops/packer:latest` [4][4]
 
 [1]: https://store.docker.com/community/images/wizdevops/drupal
 [2]: https://store.docker.com/community/images/wizdevops/python
 [3]: https://store.docker.com/community/images/wizdevops/alpine
+[4]: https://store.docker.com/community/images/wizdevops/packer

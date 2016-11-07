@@ -54,3 +54,7 @@
             image: "{{ docker_organization }}/drupal",
             tag: 8-debian,
             version: 1.0.0 }
+        - { context: ./packer,
+            image: "{{ docker_organization }}/packer",
+            tag: packer,
+            version: 0.11.0 }
