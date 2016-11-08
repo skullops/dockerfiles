@@ -37,7 +37,7 @@
         - { context: ./base_alpine,
             image: "{{ docker_organization }}/alpine",
             tag: latest,
-            version: 1.0.1 }
+            version: 1.0.2 }
         - { context: ./python/3,
             image: "{{ docker_organization }}/python",
             tag: 3-alpine,
