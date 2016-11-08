@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.4
 MAINTAINER Minca Daniel Andrei <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE
