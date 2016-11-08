@@ -58,3 +58,15 @@
             image: "{{ docker_organization }}/packer",
             tag: latest,
             version: 0.11.0 }
+        - { context: ./java,
+            image: "{{ docker_organization }}/java",
+            tag: 8-alpine,
+            version: 1.0.0 }
+        - { context: ./gocd/agent,
+            image: "{{ docker_organization }}/gocdagent",
+            tag: latest,
+            version: 1.0.0 }
+        - { context: ./gocd/server,
+            image: "{{ docker_organization }}/gocdserver",
+            tag: latest,
+            version: 1.0.0 }
