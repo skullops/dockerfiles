@@ -39,8 +39,10 @@ RUN set -x \
         curl \
         ca-certificates \
         bash \
-    && for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do curl -sSL https://github.com/dminca/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; done \
-    && apk add --allow-untrusted /tmp/*.apk \
+    && for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do \
+        curl -sSL https://github.com/dminca/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; \
+    done && \
+    apk add --allow-untrusted /tmp/*.apk \
     && rm -v /tmp/*.apk \
     && ( /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 || true ) \
     &&  echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh \
