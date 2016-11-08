@@ -3,7 +3,6 @@
 # -----------------------------------------------------------------------------
 FROM wizdevops/alpine
 MAINTAINER Daniel Andrei Minca <@dminca>
-ENV PACKER_VERSION 0.11.0
 # Metadata params
 ARG BUILD_DATE
 ARG VERSION
