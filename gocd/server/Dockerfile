@@ -6,7 +6,6 @@ ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
 ENV GOCD_VERSION="16.11.0" \
-    GOCD_BUILD="4185" \
     SHACHECK="c8fa2dc52dd4797d8f2aa85823f8896dc4d89ee77b3b23925c93afd885080875"
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
@@ -27,8 +26,8 @@ RUN set -x \
     && apk add --update --no-cache \
         curl \
         bash \
-    && curl -sSL https://download.go.cd/binaries/${GOCD_VERSION}-${GOCD_BUILD}/generic/go-server-${GOCD_VERSION}-${GOCD_BUILD}.zip > /tmp/go-server-${GOCD_VERSION}-${GOCD_BUILD}.zip \
-    && unzip /tmp/go-server-${GOCD_VERSION}-${GOCD_BUILD}.zip -d /tmp \
+    && curl -sSL https://download.go.cd/binaries/${VERSION}/generic/go-server-${VERSION}.zip > /tmp/go-server-${VERSION}.zip \
+    && unzip /tmp/go-server-${VERSION}.zip -d /tmp \
     && cd /tmp; echo "${SHACHECK}  go-server-16.11.0-4185.zip" | sha256sum -c - | grep OK; cd /\
     && mkdir /etc/go-server \
     && cp -vr /tmp/go-server-${GOCD_VERSION}/* /etc/go-server \
