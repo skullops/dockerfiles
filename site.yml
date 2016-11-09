@@ -61,7 +61,7 @@
         - { context: ./java,
             image: "{{ docker_organization }}/java",
             tag: 8-alpine,
-            version: 1.0.0 }
+            version: 1.0.1 }
         - { context: ./gocd/agent,
             image: "{{ docker_organization }}/gocdagent",
             tag: latest,
