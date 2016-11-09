@@ -44,8 +44,8 @@ RUN set -x \
     && apk add --allow-untrusted /tmp/*.apk \
     && rm -v /tmp/*.apk \
     && ( /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 || true ) \
-    &&  echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh \
-    &&  /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib \
+    && echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh \
+    && /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib \
     && mkdir /opt \
     && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/java.tar.gz \
       http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
