@@ -5,8 +5,8 @@ version: "2"
 services:
   goag:
     image: wizdevops/gocdagent
-    links:
-      - gos
+    environment:
+      GO_SERVER: gos
     depends_on:
       - gos
 
