@@ -3,11 +3,13 @@
 # -----------------------------------------------------------------------------
 version: "2"
 services:
+  goag:
+    image: wizdevops/gocdagent
+    depends_on:
+      - gos
+
   gos:
     image: wizdevops/gocdserver
     ports:
       - "8154:8154"
       - "8153:8153"
-
-  goag:
-    image: wizdevops/gocdagent
