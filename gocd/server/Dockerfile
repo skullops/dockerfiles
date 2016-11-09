@@ -5,7 +5,8 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
-ENV GOCD_VERSION="16.11.0-4185"
+ENV GOCD_VERSION="16.11.0" \
+    GOCD_BUILD="4185"
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -25,11 +26,10 @@ RUN set -x \
     && apk add --update --no-cache \
         curl \
         bash \
-    && curl -sSL https://download.go.cd/binaries/${GOCD_VERSION}/generic/go-server-${GOCD_VERSION}.zip > /tmp/go-server-${GOCD_VERSION}.zip \
-    && mkdir /etc/go \
-    && unzip /tmp/go-server-${GOCD_VERSION}.zip -d /etc/go \
-    && rm -rfv /tmp/go-server-${GOCD_VERSION}.zip \
-    && ln -sv /usr/bin/go-start /etc/go/server.sh \
-    && ln -sv /usr/bin/go-stop /etc/go/stop-server.sh
+    && curl -sSL https://download.go.cd/binaries/${GOCD_VERSION}-${GOCD_BUILD}/generic/go-server-${GOCD_VERSION}-${GOCD_BUILD}.zip > /tmp/go-server.zip \
+    && unzip /tmp/go-server.zip -d /tmp \
+    && mkdir /etc/go-server \
+    && cp -vr /tmp/go-server-${GOCD_VERSION}/* /etc/go-server \
+    && rm -rfv /tmp/*
 EXPOSE 8154 8153
-CMD ["go-start"]
+ENTRYPOINT ["/etc/go-server/server.sh"]
