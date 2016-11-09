@@ -32,4 +32,4 @@ RUN set -x \
     && cp -vr /tmp/go-server-${GOCD_VERSION}/* /etc/go-server \
     && rm -rfv /tmp/*
 EXPOSE 8154 8153
-ENTRYPOINT ["/etc/go-server/server.sh"]
+CMD ["/etc/go-server/server.sh"]
