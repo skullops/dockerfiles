@@ -1,0 +1,13 @@
+# -----------------------------------------------------------------------------
+# go.cd agent and server network
+# -----------------------------------------------------------------------------
+version: "2"
+services:
+  gos:
+    image: wizdevops/gocdserver
+    ports:
+      - "8154:8154"
+      - "8153:8153"
+
+  goag:
+    image: wizdevops/gocdagent
