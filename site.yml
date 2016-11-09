@@ -65,7 +65,7 @@
         - { context: ./gocd/agent,
             image: "{{ docker_organization }}/gocdagent",
             tag: latest,
-            version: 1.0.0 }
+            version: 16.11.0-4185 }
         - { context: ./gocd/server,
             image: "{{ docker_organization }}/gocdserver",
             tag: latest,
