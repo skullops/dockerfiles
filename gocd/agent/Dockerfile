@@ -1,4 +1,4 @@
-wizdevops/java:8-alpine
+FROM wizdevops/java:8-alpine
 MAINTAINER Daniel Andrei Minca <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE
