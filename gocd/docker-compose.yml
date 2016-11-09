@@ -5,6 +5,8 @@ version: "2"
 services:
   goag:
     image: wizdevops/gocdagent
+    links:
+      - gos
     depends_on:
       - gos
 
