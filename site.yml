@@ -70,3 +70,7 @@
             image: "{{ docker_organization }}/gocdserver",
             tag: latest,
             version: 16.11.0-4185 }
+        - { context:  ,
+            image: "{{ docker_organization }}/monit",
+            tag: latest,
+            version: 1.0.0 }
