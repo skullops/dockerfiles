@@ -43,4 +43,4 @@ RUN set -x \
     && rm -rf /tmp/*
 ADD ./monitrc /monitrc
 EXPOSE 2812
-CMD ["monit","-i"]
+CMD ["monit", "-d", "10", "-Ic","./monitrc"]
