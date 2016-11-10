@@ -26,6 +26,7 @@
         tag: "{{ item.tag }}"
         state: present
         force: true
+        nocache: false
         push: true
         rm: true
         buildargs:
@@ -70,7 +71,7 @@
             image: "{{ docker_organization }}/gocdserver",
             tag: latest,
             version: 16.11.0-4185 }
-        - { context:  ,
+        - { context: ./monit,
             image: "{{ docker_organization }}/monit",
             tag: latest,
             version: 1.0.0 }
