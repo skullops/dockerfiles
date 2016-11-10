@@ -22,12 +22,26 @@ repair and can execute meaningful causal actions in error situations.' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
       io.github.dminca.license="GPLv3"
-EXPOSE 8080
 RUN set -x \
     && apk add --update --no-cache \
         curl \
+
+        # required to build monit
+        build-base \
+        zlib-dev \
+        linux-pam-dev \
+        linux-headers \
     && curl -o /tmp/monit.tar.gz https://mmonit.com/monit/dist/monit-5.20.0.tar.gz \
-    && mkdir -p /etc/monit \
-    && tar xf /tmp/monit.tar.gz --strip-components=1 -C /etc/monit \
+    && mkdir -p /etc/monit /tmp/monit-source \
+    && tar xf /tmp/monit.tar.gz --strip-components=1 -C /tmp/monit-source \
+    && cd /tmp/monit-source; ./configure --without-ssl; cd / \
+    && make -C /tmp/monit-source/ \
+    && make install -C /tmp/monit-source/ \
+    && cp /tmp/monit-source/monitrc /etc/monit/monitrc-default \
+    && cp /tmp/monit-source/monit /etc/monit \
+    && cp /etc/monit/monitrc-default /monitrc \
+    && chown root:root /etc/monit/monitrc-default /monitrc \
+    && ln -s /etc/monit/monit /usr/bin/monit \
     && rm -rf /tmp/*
-ENTRYPOINT ["/etc/monit/bin/monit","-i"]
+EXPOSE 2812
+CMD ["monit","-i"]
