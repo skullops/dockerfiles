@@ -25,8 +25,6 @@ repair and can execute meaningful causal actions in error situations.' \
 RUN set -x \
     && apk add --update --no-cache \
         curl \
-
-        # required to build monit
         build-base \
         zlib-dev \
         linux-pam-dev \
@@ -43,5 +41,6 @@ RUN set -x \
     && chown root:root /etc/monit/monitrc-default /monitrc \
     && ln -s /etc/monit/monit /usr/bin/monit \
     && rm -rf /tmp/*
+ADD ./monitrc /monitrc
 EXPOSE 2812
 CMD ["monit","-i"]
