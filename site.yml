@@ -75,3 +75,7 @@
             image: "{{ docker_organization }}/monit",
             tag: latest,
             version: 1.0.0 }
+        - { context: ./golang,
+            image: "{{ docker_organization }}/go",
+            tag: latest,
+            version: 1.7.3 }
