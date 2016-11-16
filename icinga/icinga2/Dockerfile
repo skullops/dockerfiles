@@ -20,3 +20,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
       io.github.dminca.license="GPLv3"
+RUN set -x \
+    && apk add --update --no-cache icinga2 \
+        icingaweb2 \
+        openrc
