@@ -23,4 +23,9 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 RUN set -x \
     && apk add --update --no-cache icinga2 \
         icingaweb2 \
-        openrc
+
+        # init system for icinga
+        openrc \
+
+        # to enable downloads from https
+        ca-certificates
