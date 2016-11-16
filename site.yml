@@ -79,6 +79,15 @@
             image: "{{ docker_organization }}/go",
             tag: latest,
             version: 1.7.3 }
+        - { context: ./icinga/icinga1,
+            image: "{{ docker_organization }}/icinga",
+            tag: 1-alpine,
+            version: 1.13.3 }
+        - { context: ./icinga/icinga2,
+            image: "{{ docker_organization }}/icinga",
+            tag: 2-alpine,
+            version: 2.5.4 }
+
         - { context: ./coffeescript,
             image: "{{ docker_organization }}/coffeescript",
             tag: latest,
