@@ -23,4 +23,5 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 RUN set -x \
     && apk add --update --no-cache \
         nodejs \
+        git \
     && npm install -g coffee-script
