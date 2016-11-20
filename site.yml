@@ -79,3 +79,7 @@
             image: "{{ docker_organization }}/go",
             tag: latest,
             version: 1.7.3 }
+        - { context: ./coffeescript,
+            image: "{{ docker_organization }}/coffeescript",
+            tag: latest,
+            version: 1.0.0 }
