@@ -86,8 +86,7 @@
         - { context: ./icinga/icinga2,
             image: "{{ docker_organization }}/icinga",
             tag: 2-alpine,
-            version: 2.5.4 }
-
+            version: 2.5.4 },
         - { context: ./coffeescript,
             image: "{{ docker_organization }}/coffeescript",
             tag: latest,
