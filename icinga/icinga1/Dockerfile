@@ -5,6 +5,7 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
+ENV ICINGA_VERSION=1.13.3
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -28,9 +29,24 @@ RUN set -x \
     libjpeg \
     libpng \
     libpng-dev \
+    perl \
+    perl-dev \
 
     # install SNMP packages
     net-snmp \
     net-snmp-dev \
     net-snmp-tools \
-    net-snmp-libs
+    net-snmp-libs \
+
+    # user/group configs
+    && adduser -h /home/icinga -D icinga \
+    && addgroup icinga icinga \
+    && adduser icinga-cmd \
+    && addgroup www-data \
+    && addgroup icinga-cmd icinga \
+    && addgroup icinga-cmd www-data \
+
+    # proceed building
+    && mkdir /usr/src; cd /usr/src \
+    && wget https://github.com/Icinga/icinga-core/releases/download/v"$ICINGA_VERSION"/icinga-"$ICINGA_VERSION".tar.gz \
+    && cd icinga-"$ICINGA_VERSION"; tar xvf icinga-"$ICINGA_VERSION".tar.gz
