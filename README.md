@@ -13,8 +13,23 @@ organization:
 - `wizdevops/python:3-alpine` [2][2]
 - `wizdevops/alpine:latest` [3][3]
 - `wizdevops/packer:latest` [4][4]
+- `wizdevops/java:8-alpine` [5][5]
+- `wizdevops/gocdagent` [6][6]
+- `wizdevops/gocdserver` [7][7]
+- `wizdevops/monit` [8][8]
+- `wizdevops/go` [9][9]
+- `wizdevops/icinga:1-alpine`[10][10]
+- `wizdevops/icinga:2-alpine`[11][11]
+
 
 [1]: https://store.docker.com/community/images/wizdevops/drupal
 [2]: https://store.docker.com/community/images/wizdevops/python
 [3]: https://store.docker.com/community/images/wizdevops/alpine
 [4]: https://store.docker.com/community/images/wizdevops/packer
+[5]: https://store.docker.com/community/images/wizdevops/java
+[6]: https://store.docker.com/community/images/wizdevops/gocdagent
+[7]: https://store.docker.com/community/images/wizdevops/gocdserver
+[8]: https://store.docker.com/community/images/wizdevops/monit
+[9]: https://store.docker.com/community/images/wizdevops/go
+[10]: https://store.docker.com/community/images/wizdevops/icinga:1-alpine
+[11]: https://store.docker.com/community/images/wizdevops/icinga:2-alpine
