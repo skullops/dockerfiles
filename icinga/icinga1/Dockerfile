@@ -20,3 +20,12 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
       io.github.dminca.license="GPLv3"
+RUN set -x \
+  && apk add --update --no-cache \
+    alpine-sdk \
+    gd-dev \
+
+    # install SNMP packages
+    net-snmp \
+    net-snmp-dev \
+    net-snmp-tools
