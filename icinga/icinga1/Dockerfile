@@ -26,7 +26,6 @@ RUN set -x \
     alpine-sdk \
     gd-dev \
     libjpeg \
-    libjpeg-dev \
     libpng \
     libpng-dev \
 
