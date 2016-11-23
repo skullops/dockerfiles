@@ -41,7 +41,7 @@ RUN set -x \
     # user/group configs
     && adduser -h /home/icinga -D icinga \
     && addgroup icinga icinga \
-    && adduser icinga-cmd \
+    && adduser -D icinga-cmd \
     && addgroup www-data \
     && addgroup icinga-cmd icinga \
     && addgroup icinga-cmd www-data \
