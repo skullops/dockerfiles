@@ -22,10 +22,16 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.dminca.license="GPLv3"
 RUN set -x \
   && apk add --update --no-cache \
+    git \
     alpine-sdk \
     gd-dev \
+    libjpeg \
+    libjpeg-dev \
+    libpng \
+    libpng-dev \
 
     # install SNMP packages
     net-snmp \
     net-snmp-dev \
-    net-snmp-tools
+    net-snmp-tools \
+    net-snmp-libs
