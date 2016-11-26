@@ -32,21 +32,21 @@ RUN set -x \
     perl \
     perl-dev \
 
-    # install SNMP packages
-    net-snmp \
-    net-snmp-dev \
-    net-snmp-tools \
-    net-snmp-libs \
+  # install SNMP packages
+  net-snmp \
+  net-snmp-dev \
+  net-snmp-tools \
+  net-snmp-libs \
 
-    # user/group configs
-    && adduser -h /home/icinga -D icinga \
-    && addgroup icinga icinga \
-    && adduser -D icinga-cmd \
-    && addgroup www-data \
-    && addgroup icinga-cmd icinga \
-    && addgroup icinga-cmd www-data \
+  # user/group configs
+  && adduser -h /home/icinga -D icinga \
+  && addgroup icinga icinga \
+  && adduser -D icinga-cmd \
+  && addgroup www-data \
+  && addgroup icinga-cmd icinga \
+  && addgroup icinga-cmd www-data \
 
-    # proceed building
-    && mkdir /usr/src; cd /usr/src \
-    && wget https://github.com/Icinga/icinga-core/releases/download/v"$ICINGA_VERSION"/icinga-"$ICINGA_VERSION".tar.gz \
-    && cd icinga-"$ICINGA_VERSION"; tar xvf icinga-"$ICINGA_VERSION".tar.gz
+  # proceed building
+  && mkdir /usr/src; cd /usr/src \
+  && wget https://github.com/Icinga/icinga-core/releases/download/v"$ICINGA_VERSION"/icinga-"$ICINGA_VERSION".tar.gz \
+  && cd icinga-"$ICINGA_VERSION"; tar xvf icinga-"$ICINGA_VERSION".tar.gz
