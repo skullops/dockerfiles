@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  icinga:
+    image: icinga1
+    build:
+      context: ./icinga1
+      dockerfile: Dockerfile
+    # TODO: expose ports & set env vars
+
+  psql:
+    image: kiasaki/alpine-postgres
+    environment:
+      - POSTGRES_PASSWORD=monitor
+      - POSTGRES_USER=monitor
+      - POSTGRES_DB=monitor
+# ENABLE FOR PERSISTENCY
+    # volumes:
+    #   - ./data:/var/lib/postgresql/data
