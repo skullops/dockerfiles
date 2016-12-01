@@ -11,7 +11,9 @@ ENV ICINGA_VERSION=1.13.3 \
   DB_NAME=${DB_NAME:-icinga_web} \
   DB_PORT=${DB_PORT:-icinga_web} \
   DB_USER=${DB_USER:-icinga_web} \
-  DB_PASS=${DB_PASS:-icinga_web}
+  DB_PASS=${DB_PASS:-icinga_web} \
+  SERVER_USER=${SERVER_USER:-nginx} \
+  SERVER_GROUP=${SERVER_GROUP:-nginx}
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -48,9 +50,9 @@ RUN set -x \
   && adduser -h /home/icinga -D icinga \
   && addgroup icinga icinga \
   && adduser -D icinga-cmd \
-  && addgroup www-data \
+  && addgroup $SERVER_GROUP \
   && addgroup icinga-cmd icinga \
-  && addgroup icinga-cmd www-data \
+  && addgroup icinga-cmd $SERVER_GROUP \
 
   # proceed building
   && mkdir -p /usr/src /var/log/icinga; cd /usr/src \
@@ -59,10 +61,10 @@ RUN set -x \
   && ./configure \
   --prefix=/usr/local/icinga-web \
   --with-command-group=icinga-cmd \
-  --with-web-user=www-data \
-  --with-web-group=www-data \
+  --with-web-user=$SERVER_USER \
+  --with-web-group=$SERVER_GROUP \
   --with-web-path=/icinga-web \
-  --with-web-apache-path=/etc/apache2/conf.d \
+  --with-web-apache-path=/etc/nginx/conf.d \
   --with-db-type=$DB_TYPE \
   --with-db-port=$DB_PORT \
   --with-db-host=$DB_HOST \

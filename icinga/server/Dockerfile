@@ -24,7 +24,11 @@ Linux, super slim, fast and easy." \
       io.github.dminca.license="GPLv3"
 RUN set -x \
   && apk add --update --no-cache \
+
+  # install NGINX
   nginx \
+
+  # install PHP 7
   php7 \
   php7-pear \
   php7-xmlrpc \
@@ -34,5 +38,10 @@ RUN set -x \
   php7-ldap \
   php7-pgsql \
   php7-fpm \
+
+  # CGI wrapper for Nginx to serve scripts
   fcgiwrap \
+
+  # for using envsubst
+  gettext \
   && ln -s /usr/bin/php7 /usr/bin/php
