@@ -38,6 +38,7 @@ RUN set -x \
   php7-ldap \
   php7-pgsql \
   php7-fpm \
+  php7-json \
 
   # CGI wrapper for Nginx to serve scripts
   fcgiwrap \
@@ -45,3 +46,4 @@ RUN set -x \
   # for using envsubst
   gettext \
   && ln -s /usr/bin/php7 /usr/bin/php
+ADD ./conf /etc/nginx/conf.d
