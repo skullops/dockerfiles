@@ -58,6 +58,7 @@ RUN set -x \
   && cd icinga-"$ICINGA_VERSION"; tar xvf icinga-"$ICINGA_VERSION".tar.gz \
   && ./configure \
   --prefix=/usr/local/icinga-web \
+  --with-command-group=icinga-cmd \
   --with-web-user=www-data \
   --with-web-group=www-data \
   --with-web-path=/icinga-web \
@@ -72,4 +73,4 @@ RUN set -x \
   --with-log-dir=/var/log/icinga \
   --with-api-host=$DB_HOST \
   --with-api-subtype=pgsql \
-  --with-api-port=$DB_PORT \
+  --with-api-port=$DB_PORT
