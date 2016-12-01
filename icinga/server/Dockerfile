@@ -33,5 +33,6 @@ RUN set -x \
   php7-gd \
   php7-ldap \
   php7-pgsql \
+  php7-fpm \
   fcgiwrap \
   && ln -s /usr/bin/php7 /usr/bin/php
