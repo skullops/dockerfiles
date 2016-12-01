@@ -23,7 +23,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.dminca.license="GPLv3"
 RUN set -x \
   && apk add --update \
-		supervisor \
+    supervisor \
     nginx \
     php7 \
     php7-fpm \

@@ -5,7 +5,13 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
-ENV ICINGA_VERSION=1.13.3
+ENV ICINGA_VERSION=1.13.3 \
+  DB_TYPE=${DB_TYPE:-pgsql} \
+  DB_HOST=${DB_HOST:-psql} \
+  DB_NAME=${DB_NAME:-icinga_web} \
+  DB_PORT=${DB_PORT:-icinga_web} \
+  DB_USER=${DB_USER:-icinga_web} \
+  DB_PASS=${DB_PASS:-icinga_web}
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -47,6 +53,23 @@ RUN set -x \
   && addgroup icinga-cmd www-data \
 
   # proceed building
-  && mkdir /usr/src; cd /usr/src \
+  && mkdir -p /usr/src /var/log/icinga; cd /usr/src \
   && wget https://github.com/Icinga/icinga-core/releases/download/v"$ICINGA_VERSION"/icinga-"$ICINGA_VERSION".tar.gz \
-  && cd icinga-"$ICINGA_VERSION"; tar xvf icinga-"$ICINGA_VERSION".tar.gz
+  && cd icinga-"$ICINGA_VERSION"; tar xvf icinga-"$ICINGA_VERSION".tar.gz \
+  && ./configure \
+  --prefix=/usr/local/icinga-web \
+  --with-web-user=www-data \
+  --with-web-group=www-data \
+  --with-web-path=/icinga-web \
+  --with-web-apache-path=/etc/apache2/conf.d \
+  --with-db-type=$DB_TYPE \
+  --with-db-port=$DB_PORT \
+  --with-db-host=$DB_HOST \
+  --with-db-name=$DB_NAME \
+  --with-db-user=$DB_USER \
+  --with-db-pass=$DB_PASS \
+  --with-conf-dir=etc/conf.d \
+  --with-log-dir=/var/log/icinga \
+  --with-api-host=$DB_HOST \
+  --with-api-subtype=pgsql \
+  --with-api-port=$DB_PORT \
