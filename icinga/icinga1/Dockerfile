@@ -57,10 +57,15 @@ RUN set -x \
   # proceed building
   && mkdir -p /usr/src /var/log/icinga; cd /usr/src \
   && wget https://github.com/Icinga/icinga-core/releases/download/v"$ICINGA_VERSION"/icinga-"$ICINGA_VERSION".tar.gz \
-  && cd icinga-"$ICINGA_VERSION"; tar xvf icinga-"$ICINGA_VERSION".tar.gz \
-  && ./configure \
+  && tar xvf icinga-"$ICINGA_VERSION".tar.gz \
+  && cd icinga-"$ICINGA_VERSION"; ./configure \
   --prefix=/usr/local/icinga-web \
   --with-command-group=icinga-cmd \
+  --enable-idoutils \
+  --with-dbi-lib=/sw/lib \
+  --with-dbi-inc=/sw/src \
+  --with-gd-lib=/sw/lib \
+  --with-gd-inc=/sw/src \
   --with-web-user=$SERVER_USER \
   --with-web-group=$SERVER_GROUP \
   --with-web-path=/icinga-web \

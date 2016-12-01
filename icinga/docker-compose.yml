@@ -11,12 +11,12 @@ services:
       - psql:database
 
   nginx:
-    image: wizdevops/nginx:alpine
-    build:
-      context: ./server
-      dockerfile: Dockerfile
+    image: nginx:1.11.6-alpine
+    # build:
+    #   context: ./server
+    #   dockerfile: Dockerfile
     ports:
-      - 9000:9000
+      - 8080:80
 
   psql:
     image: kiasaki/alpine-postgres
