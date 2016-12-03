@@ -6,7 +6,15 @@ ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
 ENV ICINGA_VERSION=1.13.3 \
-  ICINGA_DOWNLOAD_URL="https://git.icinga.com/?p=icinga-core.git;a=snapshot;h=4e19d7d74905a0c1060d5dfe7c3a478bce569b11;sf=tgz;js=1"
+  ICINGA_DOWNLOAD_URL="https://git.icinga.com/?p=icinga-core.git;a=snapshot;h=4e19d7d74905a0c1060d5dfe7c3a478bce569b11;sf=tgz;js=1" \
+  CONFIGURE_OPTS="--prefix=/usr/local/icinga-standalone\
+--with-htmurl='/icinga-standalone' \
+--with-cgiurl='/icinga-standalone/cgi-bin' \
+--with-httpd-conf-file=/etc/apache2/conf.d/icinga-standalone.conf \
+--with-http-auth-file=/usr/local/icinga-standalone/etc/standalone.htpasswd.users \
+--enable-cgi-log \
+--with-cgi-log-dir=/usr/local/icinga-standalone/var/log \
+--enable-classicui-standalone"
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -35,4 +43,9 @@ RUN set -x \
   libpng-dev \
   perl \
   perl-dev \
-  && curl -SL $ICINGA_DOWNLOAD_URL > /tmp/icinga-$ICINGA_VERSION.tar.gz
+  && curl -SL $ICINGA_DOWNLOAD_URL > /tmp/icinga-$ICINGA_VERSION.tar.gz \
+  && cd /tmp; tar xvf icinga-$ICINGA_VERSION.tar.gz \
+  && cd icinga-core-4e19d7d; ./configure $CONFIGURE_OPTS \
+
+  # once configured, build the Classic UI CGIs
+  && make classicui-standalone
