@@ -31,53 +31,20 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.dminca.license="GPLv3"
 RUN set -x \
   && apk add --update --no-cache \
-    git \
-    alpine-sdk \
-    gd-dev \
-    libjpeg \
-    libpng \
-    libpng-dev \
-    perl \
-    perl-dev \
+
+    # required to build from source
+    # git \
+    # alpine-sdk \
+    # gd-dev \
+    # libjpeg \
+    # libpng \
+    # libpng-dev \
+    # perl \
+    # perl-dev \
 
   # install SNMP packages
   net-snmp \
   net-snmp-dev \
   net-snmp-tools \
   net-snmp-libs \
-
-  # user/group configs
-  && adduser -h /home/icinga -D icinga \
-  && addgroup icinga icinga \
-  && adduser -D icinga-cmd \
-  && addgroup $SERVER_GROUP \
-  && addgroup icinga-cmd icinga \
-  && addgroup icinga-cmd $SERVER_GROUP \
-
-  # proceed building
-  && mkdir -p /usr/src /var/log/icinga; cd /usr/src \
-  && wget https://github.com/Icinga/icinga-core/releases/download/v"$ICINGA_VERSION"/icinga-"$ICINGA_VERSION".tar.gz \
-  && tar xvf icinga-"$ICINGA_VERSION".tar.gz \
-  && cd icinga-"$ICINGA_VERSION"; ./configure \
-  --prefix=/usr/local/icinga-web \
-  --with-command-group=icinga-cmd \
-  --enable-idoutils \
-  --with-dbi-lib=/sw/lib \
-  --with-dbi-inc=/sw/src \
-  --with-gd-lib=/sw/lib \
-  --with-gd-inc=/sw/src \
-  --with-web-user=$SERVER_USER \
-  --with-web-group=$SERVER_GROUP \
-  --with-web-path=/icinga-web \
-  --with-web-apache-path=/etc/nginx/conf.d \
-  --with-db-type=$DB_TYPE \
-  --with-db-port=$DB_PORT \
-  --with-db-host=$DB_HOST \
-  --with-db-name=$DB_NAME \
-  --with-db-user=$DB_USER \
-  --with-db-pass=$DB_PASS \
-  --with-conf-dir=etc/conf.d \
-  --with-log-dir=/var/log/icinga \
-  --with-api-host=$DB_HOST \
-  --with-api-subtype=pgsql \
-  --with-api-port=$DB_PORT
+  icinga2
