@@ -22,17 +22,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.dminca.license="GPLv3"
 RUN set -x \
   && apk add --update --no-cache \
-
-    # required to build from source
-    # git \
-    # alpine-sdk \
-    # gd-dev \
-    # libjpeg \
-    # libpng \
-    # libpng-dev \
-    # perl \
-    # perl-dev \
-
   # install SNMP packages
   net-snmp \
   net-snmp-dev \
