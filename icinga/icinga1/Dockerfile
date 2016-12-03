@@ -22,9 +22,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.dminca.license="GPLv3"
 RUN set -x \
   && apk add --update --no-cache \
-  # install SNMP packages
-  net-snmp \
-  net-snmp-dev \
-  net-snmp-tools \
-  net-snmp-libs \
   icinga2
