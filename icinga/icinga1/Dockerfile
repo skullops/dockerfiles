@@ -53,6 +53,7 @@ RUN set -x \
   && cd icinga-core-4e19d7d; ./configure $CONFIGURE_OPTS \
 
   # once configured, build the Classic UI CGIs
+  && make classicui-standalone \
   && make \
     install-classicui-standalone \
     install-classicui-standalone-conf \
