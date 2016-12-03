@@ -5,6 +5,8 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
+ENV ICINGA_VERSION=1.13.3 \
+  ICINGA_DOWNLOAD_URL="https://git.icinga.com/?p=icinga-core.git;a=snapshot;h=4e19d7d74905a0c1060d5dfe7c3a478bce569b11;sf=tgz;js=1"
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
