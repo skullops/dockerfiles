@@ -43,9 +43,17 @@ RUN set -x \
   libpng-dev \
   perl \
   perl-dev \
+
+  # prepare for building
+  && mkdir -vp /etc/apache2/conf.d \
+    /usr/local/icinga-standalone/etc/ \
+
   && curl -SL $ICINGA_DOWNLOAD_URL > /tmp/icinga-$ICINGA_VERSION.tar.gz \
   && cd /tmp; tar xvf icinga-$ICINGA_VERSION.tar.gz \
   && cd icinga-core-4e19d7d; ./configure $CONFIGURE_OPTS \
 
   # once configured, build the Classic UI CGIs
-  && make classicui-standalone
+  && make \
+    install-classicui-standalone \
+    install-classicui-standalone-conf \
+    install-webconf-auth
