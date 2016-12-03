@@ -5,15 +5,6 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
-ENV ICINGA_VERSION=1.13.3 \
-  DB_TYPE=${DB_TYPE:-pgsql} \
-  DB_HOST=${DB_HOST:-psql} \
-  DB_NAME=${DB_NAME:-icinga_web} \
-  DB_PORT=${DB_PORT:-icinga_web} \
-  DB_USER=${DB_USER:-icinga_web} \
-  DB_PASS=${DB_PASS:-icinga_web} \
-  SERVER_USER=${SERVER_USER:-nginx} \
-  SERVER_GROUP=${SERVER_GROUP:-nginx}
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
