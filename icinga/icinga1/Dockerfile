@@ -24,4 +24,15 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.dminca.license="GPLv3"
 RUN set -x \
   && apk add --update --no-cache \
-  icinga2
+  icinga2 \
+
+  # required to build from source
+  git \
+  alpine-sdk \
+  gd-dev \
+  libjpeg \
+  libpng \
+  libpng-dev \
+  perl \
+  perl-dev \
+  && curl -sL $ICINGA_DOWNLOAD_URL > /tmp/icinga-$ICINGA_VERSION.tar.gz
