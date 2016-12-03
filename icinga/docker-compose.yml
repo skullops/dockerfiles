@@ -8,12 +8,14 @@ services:
       dockerfile: Dockerfile
     links:
       - nginx:server
-      - psql:database
+      - psql:db
 
   nginx:
     image: nginx:1.11.6-alpine
     ports:
       - 8080:80
+    # volumes:
+    #   - ./data/nginx:/etc/nginx
 
   psql:
     image: kiasaki/alpine-postgres
@@ -23,6 +25,6 @@ services:
       - POSTGRES_DB=icinga_web
     ports:
       - 5432
-# ENABLE FOR PERSISTENCY
+# TODO: ENABLE FOR PERSISTENCY
     # volumes:
-    #   - ./data:/var/lib/postgresql/data
+    #   - ./data/postgres:/var/lib/postgresql/data
