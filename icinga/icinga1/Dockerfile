@@ -35,4 +35,4 @@ RUN set -x \
   libpng-dev \
   perl \
   perl-dev \
-  && curl -sL $ICINGA_DOWNLOAD_URL > /tmp/icinga-$ICINGA_VERSION.tar.gz
+  && curl -SL $ICINGA_DOWNLOAD_URL > /tmp/icinga-$ICINGA_VERSION.tar.gz
