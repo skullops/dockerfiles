@@ -1,0 +1,31 @@
+version: "2"
+
+services:
+  icinga:
+    image: wizdevops/icinga:1-alpine
+    build:
+      context: ./icinga1
+      dockerfile: Dockerfile
+    links:
+      - nginx:server
+      - psql:db
+    volumes:
+      - ./data/icinga2:/etc/icinga2
+
+  nginx:
+    image: nginx:1.11.6-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./data/nginx:/etc/nginx
+
+  psql:
+    image: kiasaki/alpine-postgres
+    environment:
+      - POSTGRES_PASSWORD=icinga_web
+      - POSTGRES_USER=icinga_web
+      - POSTGRES_DB=icinga_web
+    ports:
+      - 5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
