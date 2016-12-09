@@ -7,7 +7,7 @@
     - name: install docker-py
       become: true
       become_method: sudo
-      pip: 
+      pip:
         name: docker-py
         state: present
   tasks:
@@ -35,10 +35,14 @@
           VCS_URL: "{{ vcs_url.stdout }}"
           VCS_REF: "{{ vcs_ref.stdout }}"
       with_items:
-        - { context: ./base_alpine,
+        - { context: ./alpine/base,
             image: "{{ docker_organization }}/alpine",
             tag: latest,
             version: 1.0.2 }
+        - { context: ./alpine/dev,
+            image: "{{ docker_organization }}/alpine",
+            tag: dev,
+            version: 1.1.0 }
         - { context: ./python/3,
             image: "{{ docker_organization }}/python",
             tag: 3-alpine,
