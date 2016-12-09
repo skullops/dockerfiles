@@ -24,6 +24,7 @@ repair and can execute meaningful causal actions in error situations.' \
       io.github.dminca.license="GPLv3"
 RUN set -x \
     && apk add --update --no-cache \
+        dumb-init \
         curl \
         build-base \
         zlib-dev \
@@ -37,10 +38,9 @@ RUN set -x \
     && make install -C /tmp/monit-source/ \
     && cp /tmp/monit-source/monitrc /etc/monit/monitrc-default \
     && cp /tmp/monit-source/monit /etc/monit \
-    && cp /etc/monit/monitrc-default /monitrc \
-    && chown root:root /etc/monit/monitrc-default /monitrc \
+    && chown root:root /etc/monit/monitrc-default \
     && ln -s /etc/monit/monit /usr/bin/monit \
     && rm -rf /tmp/*
 ADD ./monitrc /monitrc
 EXPOSE 2812
-CMD ["monit", "-d", "10", "-Ic","./monitrc"]
+CMD ["dumb-init","monit", "-d", "10", "-Ic","./monitrc"]
