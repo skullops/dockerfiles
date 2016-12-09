@@ -36,6 +36,14 @@ RUN set -x \
     && cd /tmp/monit-source; ./configure --without-ssl; cd / \
     && make -C /tmp/monit-source/ \
     && make install -C /tmp/monit-source/ \
+
+      # remove build dependencies
+      && apk del --purge \
+        build-base \
+        zlib-dev \
+        linux-pam-dev \
+        linux-headers \
+
     && cp /tmp/monit-source/monitrc /etc/monit/monitrc-default \
     && cp /tmp/monit-source/monit /etc/monit \
     && chown root:root /etc/monit/monitrc-default \
