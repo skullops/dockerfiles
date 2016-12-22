@@ -25,7 +25,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       io.github.dminca.license="GPLv3"
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=102 \
+    JAVA_VERSION_MINOR=111 \
     JAVA_VERSION_BUILD=14 \
     JAVA_PACKAGE=jdk \
     JAVA_JCE=standard \
