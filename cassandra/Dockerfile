@@ -26,5 +26,5 @@ RUN set -x \
   # download and build
   && apk add --update git \
   && mkdir /build \
-  && git clone https://github.com/apache/cassandra.git /build \
-  && cd /build; git checkout cassandra-3.9; ant
+  && git clone -b cassandra-3.9 https://github.com/apache/cassandra.git /build \
+  && cd /build; ant
