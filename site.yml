@@ -83,3 +83,11 @@
             image: "{{ docker_organization }}/coffeescript",
             tag: latest,
             version: 1.0.0 }
+        - { context: ./ant,
+            image: "{{ docker_organization }}/ant",
+            tag: latest,
+            version: 1.0.0 }
+        - { context: ./cassandra,
+            image: "{{ docker_organization }}/cassandra",
+            tag: latest,
+            version: 3.9 }
