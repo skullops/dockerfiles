@@ -44,7 +44,7 @@ RUN set -x \
     php7-ssh2 \
     php7-phar \
     php7-zlib \
-    'tar=1.29-r1' \
+    tar=1.29-r1 \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
   && mkdir -p /var/www/html \
