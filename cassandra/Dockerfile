@@ -24,7 +24,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 RUN set -x \
   
   # download and build
-  && apk add --update git \
+  && apk add --update --no-cache git \
   && mkdir /build \
   && git clone -b cassandra-3.9 https://github.com/apache/cassandra.git /build \
   && cd /build; ant
