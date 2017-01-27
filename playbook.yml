@@ -50,7 +50,7 @@
         - { context: ./drupal/alpine,
             image: "{{ docker_organization }}/drupal",
             tag: 8-alpine,
-            version: 1.1.1 }
+            version: 1.2.0 }
         - { context: ./drupal/debian,
             image: "{{ docker_organization }}/drupal",
             tag: 8-debian,
@@ -81,5 +81,9 @@
             version: 1.7.3 }
         - { context: ./coffeescript,
             image: "{{ docker_organization }}/coffeescript",
+            tag: latest,
+            version: 1.0.0 }
+        - { context: ./alpine-mysql,
+            image: "{{ docker_organization }}/alpine-mysql",
             tag: latest,
             version: 1.0.0 }
