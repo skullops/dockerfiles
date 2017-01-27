@@ -83,3 +83,7 @@
             image: "{{ docker_organization }}/coffeescript",
             tag: latest,
             version: 1.0.0 }
+        - { context: ./alpine-mysql,
+            image: "{{ docker_organization }}/alpine-mysql",
+            tag: latest,
+            version: 1.0.0 }
