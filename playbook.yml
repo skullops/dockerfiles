@@ -22,7 +22,7 @@
     - name: build images and push to docker cloud
       docker_image:
         path: "{{ item.context }}"
-        name: "{{ item.image }}"
+        name: "{{ docker_organization }}/{{ item.image }}"
         tag: "{{ item.tag }}"
         state: present
         force: true
@@ -36,54 +36,58 @@
           VCS_REF: "{{ vcs_ref.stdout }}"
       with_items:
         - { context: ./base_alpine,
-            image: "{{ docker_organization }}/alpine",
+            image: "alpine",
             tag: latest,
             version: 1.0.2 }
         - { context: ./python/3,
-            image: "{{ docker_organization }}/python",
+            image: "python",
             tag: 3-alpine,
             version: 1.1.0 }
         - { context: ./python/2.7,
-            image: "{{ docker_organization }}/python",
+            image: "python",
             tag: 2.7-alpine,
             version: 1.1.1 }
         - { context: ./drupal/alpine,
-            image: "{{ docker_organization }}/drupal",
+            image: "drupal",
             tag: 8-alpine,
             version: 1.2.0 }
         - { context: ./drupal/debian,
-            image: "{{ docker_organization }}/drupal",
+            image: "drupal",
             tag: 8-debian,
             version: 1.0.0 }
         - { context: ./packer,
-            image: "{{ docker_organization }}/packer",
+            image: "packer",
             tag: latest,
             version: 0.11.0 }
         - { context: ./java,
-            image: "{{ docker_organization }}/java",
+            image: "java",
             tag: 8-alpine,
             version: 1.0.1 }
         - { context: ./gocd/agent,
-            image: "{{ docker_organization }}/gocdagent",
+            image: "gocdagent",
             tag: latest,
             version: 16.11.0-4185 }
         - { context: ./gocd/server,
-            image: "{{ docker_organization }}/gocdserver",
+            image: "gocdserver",
             tag: latest,
             version: 16.11.0-4185 }
         - { context: ./monit,
-            image: "{{ docker_organization }}/monit",
+            image: "monit",
             tag: latest,
             version: 1.0.0 }
         - { context: ./golang,
-            image: "{{ docker_organization }}/go",
+            image: "go",
             tag: latest,
             version: 1.7.3 }
         - { context: ./coffeescript,
-            image: "{{ docker_organization }}/coffeescript",
+            image: "coffeescript",
             tag: latest,
             version: 1.0.0 }
         - { context: ./alpine-mysql,
-            image: "{{ docker_organization }}/alpine-mysql",
+            image: "alpine-mysql",
+            tag: latest,
+            version: 1.0.0 }
+        - { context: ./docker-alpine-webdav,
+            image: "alpine-webdav",
             tag: latest,
             version: 1.0.0 }
