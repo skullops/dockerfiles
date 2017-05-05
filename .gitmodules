@@ -6,3 +6,7 @@
 	path = docker-webdav
 	url = git@github.com:dminca/docker-webdav.git
 	branch = master
+[submodule "docker-alpine-nginx"]
+	path = docker-alpine-nginx
+	url = git@github.com:dminca/docker-alpine-nginx.git
+	branch = master
