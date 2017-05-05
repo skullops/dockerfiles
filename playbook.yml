@@ -87,7 +87,7 @@
             image: "alpine-mysql",
             tag: latest,
             version: 1.0.0 }
-        - { context: ./docker-nginx-webdav,
-            image: "nginx-webdav",
+        - { context: ./docker-webdav,
+            image: "alpine-webdav",
             tag: latest,
             version: 1.0.0 }
