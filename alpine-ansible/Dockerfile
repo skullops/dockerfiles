@@ -1,5 +1,5 @@
 FROM wizdevops/python:2.7-alpine
-MAINTAINER Daniel Andrei Minca <mandrei17@gmail.com>
+LABEL MAINTAINER="Daniel Andrei Minca <mandrei17@gmail.com>"
 
 RUN set -x \
   && apk add --update --no-cache \
@@ -7,9 +7,8 @@ RUN set -x \
     openssl-dev \
     git \
     bash \
-  && git clone git://github.com/ansible/ansible.git --recursive \
-  && source /ansible/hacking/env-setup \
-  && pip install -r /ansible/requirements.txt \
-  && bash -c "pushd /ansible; git pull --rebase; pushd"
+  && git clone https://github.com/ansible/ansible.git --recursive \
+  && pip install -r /ansible/requirements.txt
 
-CMD ansible --version
+CMD ["bash"]
+
