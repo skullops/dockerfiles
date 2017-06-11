@@ -1,1 +1,3 @@
-sh 'id'
+stage 'build' {
+  sh 'id'
+}
