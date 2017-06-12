@@ -1,4 +1,4 @@
-# WizDevOps DOCKER IMAGES [![Build Status](http://165.227.131.67:8080/buildStatus/icon?job=mao&build=4)](http://165.227.131.67:8080/job/mao/4/)
+# WizDevOps DOCKER IMAGES [![Build Status](http://165.227.131.67:8080/job/mao/7//badge/icon)](http://165.227.131.67:8080/job/mao/7/)
 > This repo contains base Dockerfiles
 
 Images are build from Alpine Linux (edge, with latest updates), and the good old
