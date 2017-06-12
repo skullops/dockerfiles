@@ -22,7 +22,6 @@ organization:
 | `wizdevops/go`           | `latest`     |
 | `wizdevops/coffeescript` | `latest`     |
 | `wizdevops/ant`          | `latest`     |
-| `wizdevops/icinga`       | `1-alpine`   |
-| `wizdevops/icinga`       | `2-alpine`   |
+| `wizdevops/ansible`       | `latest`   |
 
 [1]: https://store.docker.com/search?q=wizdevops&source=community&type=image
