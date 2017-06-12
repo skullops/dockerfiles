@@ -21,7 +21,6 @@ organization:
 | `wizdevops/monit`        | `latest`     |
 | `wizdevops/go`           | `latest`     |
 | `wizdevops/coffeescript` | `latest`     |
-| `wizdevops/ant`          | `latest`     |
 | `wizdevops/ansible`       | `latest`   |
 
 [1]: https://store.docker.com/search?q=wizdevops&source=community&type=image
