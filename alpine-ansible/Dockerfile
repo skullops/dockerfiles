@@ -7,8 +7,6 @@ RUN set -x \
     openssl-dev \
     git \
     bash \
-  && git clone https://github.com/ansible/ansible.git --recursive \
-  && pip install -r /ansible/requirements.txt \
   && pip install \
     six \
     nose \
