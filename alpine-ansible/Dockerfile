@@ -8,7 +8,11 @@ RUN set -x \
     git \
     bash \
   && git clone https://github.com/ansible/ansible.git --recursive \
-  && pip install -r /ansible/requirements.txt
+  && pip install -r /ansible/requirements.txt \
+  && pip install \
+    six \
+    nose \
+    httplib2
 
 CMD ["bash"]
 
