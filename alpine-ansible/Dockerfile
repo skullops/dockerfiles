@@ -12,5 +12,11 @@ RUN set -x \
     nose \
     httplib2
 
+ADD https://raw.githubusercontent.com/ansible/ansible/devel/requirements.txt /app
+
+# install Ansible requirements
+RUN set -x \
+  && pip install --no-cache-dir -r /app/requirements.txt
+
 CMD ["bash"]
 
