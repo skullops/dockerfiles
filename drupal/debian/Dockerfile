@@ -1,5 +1,4 @@
 FROM php:7.0.6-apache
-MAINTAINER Minca Daniel Andrei <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE
 ARG VERSION
@@ -19,7 +18,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.cmd.devel='docker run --rm -ti wizdevops/drupal:8-debian bash' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
-      io.github.dminca.license="GPLv3"
+      io.github.dminca.license="GPLv3" \
+      MAINTAINER="Minca Daniel Andrei <mandrei17@gmail.com>"
 RUN apt-get update -qq \
   && apt-get install -yqq libapache2-mod-auth-pgsql libpng12-dev libjpeg-dev libpq-dev \
   && rm -rf /var/lib/apt/lists/* \
@@ -30,8 +30,6 @@ RUN a2enmod rewrite \
   # install Drupal Console
   && php -r "readfile('https://drupalconsole.com/installer');" > drupal.phar \
   && mv drupal.phar /usr/local/bin/drupal \
-  && chmod +x /usr/local/bin/drupal \
-  && drupal init --override \
-  && drupal check
+  && chmod +x /usr/local/bin/drupal
 
 EXPOSE 80
