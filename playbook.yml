@@ -87,3 +87,28 @@
             image: "{{ docker_organization }}/alpine-mysql",
             tag: latest,
             version: 1.0.0 }
+        - { context: ./alpine-ansible,
+            image: "{{ docker_organization }}/ansible",
+            tag: latest,
+            version: 1.0.0 }
+
+    - name: cleanup after build
+      docker_image:
+        name: "{{ docker_organization }}"
+        tag: "{{ item }}"
+        force: true
+        state: absent
+      with_items:
+        - alpine
+        - python
+        - drupal
+        - packer
+        - java
+        - gocdagent
+        - gocdserver
+        - monit
+        - go
+        - coffeescript
+        - ansible
+        - alpine-mysql
+
