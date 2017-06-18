@@ -23,6 +23,8 @@ install:
   - sudo apt-get install -y ansible
   - sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2.7 /usr/bin/python
   - ansible --version
+  # login docker
+  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 
 script:
   - ansible-playbook playbook.yml --syntax-check
