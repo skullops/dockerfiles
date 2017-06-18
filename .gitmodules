@@ -1,4 +1,4 @@
 [submodule "alpine-mysql"]
 	path = alpine-mysql
-	url = https://github.com/WizDevOps/alpine-mysql.git
+	url = git@github.com:WizDevOps/alpine-mysql.git
 	branch = master
