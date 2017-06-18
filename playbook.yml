@@ -110,4 +110,5 @@
         - go
         - coffeescript
         - ansible
+        - alpine-mysql
 
