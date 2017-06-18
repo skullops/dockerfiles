@@ -22,11 +22,19 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 			MAINTAINER="Minca Daniel Andrei <mandrei17@gmail.com>"
 
 ENV NODE_VERSION=v6.10.0 \
-		NPM_VERSION=3
+		NPM_VERSION=3 \
+    BUILD_DEPS="\
+    curl \
+    make \
+    gcc \
+    g++ \
+    python \
+    linux-headers \
+    libgcc \
+    libstdc++"
 
 RUN set -x \
-		&&  apk upgrade --update \
-    && apk add --update git curl make gcc g++ python linux-headers libgcc libstdc++ \
+    && apk add --update --no-cache --virtual=build-deps ${BUILD_DEPS} git \
     && curl -sSL https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}.tar.gz | tar -xz \
     && cd /node-${NODE_VERSION} \
     && ./configure --prefix=/usr --without-snapshot \
@@ -36,7 +44,7 @@ RUN set -x \
     && npm install -g \
 			npm@${NPM_VERSION} \
 			coffee-script \
-    && apk del gcc g++ linux-headers \
+    && apk del build-deps \
     && rm -rf /etc/ssl /node-${NODE_VERSION} /usr/include \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp \
     /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html
