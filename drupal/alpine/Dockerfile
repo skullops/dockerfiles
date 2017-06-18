@@ -55,7 +55,9 @@ RUN set -x \
   && sed -i '/^user/c \user = nginx' /etc/php7/php-fpm.conf \
   && sed -i '/^group/c \group = nginx' /etc/php7/php-fpm.conf \
   && sed -i 's/^listen.allowed_clients/;listen.allowed_clients/' /etc/php7/php-fpm.conf
-RUN ln -s /usr/bin/php7 /usr/bin/php
+RUN set -x \
+  && rm -fv /usr/bin/php \
+  && ln -s /usr/bin/php7 /usr/bin/php
 COPY files/default.conf /etc/nginx/conf.d/
 COPY files/nginx.conf /etc/nginx/nginx.conf
 COPY files/supervisord.conf /etc/supervisord.conf

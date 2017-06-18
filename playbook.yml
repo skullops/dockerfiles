@@ -50,11 +50,11 @@
         - { context: ./drupal/alpine,
             image: "{{ docker_organization }}/drupal",
             tag: 8-alpine,
-            version: 1.2.0 }
+            version: 1.3.0 }
         - { context: ./drupal/debian,
             image: "{{ docker_organization }}/drupal",
             tag: 8-debian,
-            version: 1.0.0 }
+            version: 1.1.0 }
         - { context: ./packer,
             image: "{{ docker_organization }}/packer",
             tag: latest,
@@ -62,7 +62,7 @@
         - { context: ./java,
             image: "{{ docker_organization }}/java",
             tag: 8-alpine,
-            version: 1.0.1 }
+            version: 1.1.0 }
         - { context: ./gocd/agent,
             image: "{{ docker_organization }}/gocdagent",
             tag: latest,
@@ -82,8 +82,33 @@
         - { context: ./coffeescript,
             image: "{{ docker_organization }}/coffeescript",
             tag: latest,
-            version: 1.0.0 }
+            version: 1.1.0 }
         - { context: ./alpine-mysql,
             image: "{{ docker_organization }}/alpine-mysql",
             tag: latest,
             version: 1.0.0 }
+        - { context: ./alpine-ansible,
+            image: "{{ docker_organization }}/ansible",
+            tag: latest,
+            version: 1.1.0 }
+
+    - name: cleanup after build
+      docker_image:
+        name: "{{ docker_organization }}"
+        tag: "{{ item }}"
+        force: true
+        state: absent
+      with_items:
+        - alpine
+        - python
+        - drupal
+        - packer
+        - java
+        - gocdagent
+        - gocdserver
+        - monit
+        - go
+        - coffeescript
+        - ansible
+        - alpine-mysql
+
