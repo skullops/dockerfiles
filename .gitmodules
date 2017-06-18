@@ -2,3 +2,7 @@
 	path = alpine-mysql
 	url = git@github.com:WizDevOps/alpine-mysql.git
 	branch = master
+[submodule "docker-alpine-webdav"]
+	path = docker-alpine-webdav
+	url = git@github.com:dminca/docker-alpine-webdav.git
+	branch = master
