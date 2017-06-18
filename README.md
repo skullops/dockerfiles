@@ -1,4 +1,4 @@
-# WizDevOps DOCKER IMAGES [![Build Status](http://165.227.131.67:8080/job/mao/7//badge/icon)](http://165.227.131.67:8080/job/mao/7/)
+# WizDevOps DOCKER IMAGES [![Build Status](https://travis-ci.org/WizDevOps/dockerfiles.svg?branch=master)](https://travis-ci.org/WizDevOps/dockerfiles)
 > This repo contains base Dockerfiles
 
 Images are build from Alpine Linux (edge, with latest updates), and the good old
@@ -21,6 +21,7 @@ organization:
 | `wizdevops/monit`        | `latest`     |
 | `wizdevops/go`           | `latest`     |
 | `wizdevops/coffeescript` | `latest`     |
-| `wizdevops/ansible`       | `latest`   |
+| `wizdevops/ansible`      | `latest`     |
+| `wizdevops/alpine-mysql` | `latest`     |
 
 [1]: https://store.docker.com/search?q=wizdevops&source=community&type=image
