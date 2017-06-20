@@ -16,7 +16,7 @@
       register: vcs_url
 
     - name: grab the vcs-ref
-      command: git rev-parse --short HEAD
+      command: git describe --long
       register: vcs_ref
 
     - name: build images and push to docker cloud
