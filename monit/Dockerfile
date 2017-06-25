@@ -22,16 +22,18 @@ repair and can execute meaningful causal actions in error situations.' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
       io.github.dminca.license="GPLv3" \
       MAINTAINER="Minca Daniel Andrei <mandrei17@gmail.com>"
+ENV MONIT_VERSION="5.20.0"
 ENV BUILD_PACKAGES="\
   curl \
   build-base \
   zlib-dev \
   linux-pam-dev \
-  linux-headers"
+  linux-headers" \
+  MONIT_URL="https://mmonit.com/monit/dist/monit-$MONIT_VERSION.tar.gz"
 
 RUN set -x \
     && apk add --update --no-cache --virtual build-deps $BUILD_PACKAGES dumb-init \
-    && curl -o /tmp/monit.tar.gz https://mmonit.com/monit/dist/monit-5.20.0.tar.gz \
+    && curl -o /tmp/monit.tar.gz $MONIT_URL \
     && mkdir -p /etc/monit /tmp/monit-source \
     && tar xf /tmp/monit.tar.gz --strip-components=1 -C /tmp/monit-source \
     && cd /tmp/monit-source; ./configure --without-ssl; cd / \
