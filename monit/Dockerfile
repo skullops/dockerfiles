@@ -22,7 +22,7 @@ repair and can execute meaningful causal actions in error situations.' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
       io.github.dminca.license="GPLv3" \
       MAINTAINER="Minca Daniel Andrei <mandrei17@gmail.com>"
-ENV MONIT_VERSION="5.20.0"
+ENV MONIT_VERSION="5.23.0"
 ENV BUILD_PACKAGES="\
   curl \
   build-base \
