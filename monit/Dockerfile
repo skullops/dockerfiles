@@ -1,5 +1,4 @@
 FROM wizdevops/alpine
-MAINTAINER Minca Daniel Andrei <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE
 ARG VERSION
@@ -21,15 +20,18 @@ repair and can execute meaningful causal actions in error situations.' \
       org.label-schema.docker.cmd.devel='docker run --rm -ti wizdevops/monit ash' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
-      io.github.dminca.license="GPLv3"
+      io.github.dminca.license="GPLv3" \
+      MAINTAINER="Minca Daniel Andrei <mandrei17@gmail.com>"
+ENV BUILD_PACKAGES="\
+  dumb-init \
+  curl \
+  build-base \
+  zlib-dev \
+  linux-pam-dev \
+  linux-headers"
+
 RUN set -x \
-    && apk add --update --no-cache \
-        dumb-init \
-        curl \
-        build-base \
-        zlib-dev \
-        linux-pam-dev \
-        linux-headers \
+    && apk add --update --no-cache --virtual build-deps $BUILD_PACKAGES \
     && curl -o /tmp/monit.tar.gz https://mmonit.com/monit/dist/monit-5.20.0.tar.gz \
     && mkdir -p /etc/monit /tmp/monit-source \
     && tar xf /tmp/monit.tar.gz --strip-components=1 -C /tmp/monit-source \
@@ -38,11 +40,7 @@ RUN set -x \
     && make install -C /tmp/monit-source/ \
 
       # remove build dependencies
-      && apk del --purge \
-        build-base \
-        zlib-dev \
-        linux-pam-dev \
-        linux-headers \
+      && apk del --purge build-deps \
 
     && cp /tmp/monit-source/monitrc /etc/monit/monitrc-default \
     && cp /tmp/monit-source/monit /etc/monit \
