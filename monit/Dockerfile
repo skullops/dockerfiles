@@ -23,7 +23,6 @@ repair and can execute meaningful causal actions in error situations.' \
       io.github.dminca.license="GPLv3" \
       MAINTAINER="Minca Daniel Andrei <mandrei17@gmail.com>"
 ENV BUILD_PACKAGES="\
-  dumb-init \
   curl \
   build-base \
   zlib-dev \
@@ -31,7 +30,7 @@ ENV BUILD_PACKAGES="\
   linux-headers"
 
 RUN set -x \
-    && apk add --update --no-cache --virtual build-deps $BUILD_PACKAGES \
+    && apk add --update --no-cache --virtual build-deps $BUILD_PACKAGES dumb-init \
     && curl -o /tmp/monit.tar.gz https://mmonit.com/monit/dist/monit-5.20.0.tar.gz \
     && mkdir -p /etc/monit /tmp/monit-source \
     && tar xf /tmp/monit.tar.gz --strip-components=1 -C /tmp/monit-source \
