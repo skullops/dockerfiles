@@ -2,11 +2,11 @@ FROM wizdevops/java:8-alpine
 MAINTAINER Daniel Andrei Minca <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE
-ARG VERSION=${VERSION:-"16.11.0-4185"}
+ARG VERSION=${VERSION:-"17.8.0-5277"}
 ARG VCS_URL
 ARG VCS_REF
-ENV GOCD_VERSION="16.11.0" \
-    SHACHECK="2d1d750be75340a6e87058be91c8a0af2187985bef916d4901b03e06875d5bd1"
+ENV GOCD_VERSION="17.8.0" \
+    SHACHECK="4c9c220240ee42a189c787c1bd967f36c9d2e63f75fb4019f3f3cc409f4db733"
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
