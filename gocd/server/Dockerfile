@@ -28,6 +28,7 @@ RUN set -x \
     && apk add --update --no-cache \
         curl \
         bash \
+        git \
     && curl -sSL https://download.go.cd/binaries/${VERSION}/generic/go-server-${VERSION}.zip > /tmp/go-server-${VERSION}.zip \
     && mkdir /etc/go-server \
     && unzip /tmp/go-server-${VERSION}.zip -d /tmp \
