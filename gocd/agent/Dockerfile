@@ -26,6 +26,7 @@ RUN set -x \
     && apk add --update --no-cache \
         curl \
         bash \
+        git \
     && curl -sSL https://download.go.cd/binaries/${VERSION}/generic/go-agent-${VERSION}.zip > /tmp/go-agent-${VERSION}.zip \
     && mkdir /etc/go-agent \
     && unzip /tmp/go-agent-${VERSION}.zip -d /tmp \
