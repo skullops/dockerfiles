@@ -66,11 +66,11 @@
         - { context: ./gocd/agent,
             image: "{{ docker_organization }}/gocdagent",
             tag: latest,
-            version: 16.11.0-4185 }
+            version: 2.0.0 }
         - { context: ./gocd/server,
             image: "{{ docker_organization }}/gocdserver",
             tag: latest,
-            version: 16.11.0-4185 }
+            version: 2.0.0 }
         - { context: ./monit,
             image: "{{ docker_organization }}/monit",
             tag: latest,
@@ -91,24 +91,4 @@
             image: "{{ docker_organization }}/ansible",
             tag: latest,
             version: 1.1.0 }
-
-    - name: cleanup after build
-      docker_image:
-        name: "{{ docker_organization }}"
-        tag: "{{ item }}"
-        force: true
-        state: absent
-      with_items:
-        - alpine
-        - python
-        - drupal
-        - packer
-        - java
-        - gocdagent
-        - gocdserver
-        - monit
-        - go
-        - coffeescript
-        - ansible
-        - alpine-mysql
 
