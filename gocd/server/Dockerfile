@@ -29,7 +29,9 @@ RUN set -x \
         curl \
         bash \
         git \
-    && curl -sSL https://download.go.cd/binaries/${VERSION}/generic/go-server-${VERSION}.zip > /tmp/go-server-${VERSION}.zip \
+    && cd /tmp;\
+      curl -sSLO https://download.go.cd/binaries/${VERSION}/generic/go-server-${VERSION}.zip;\
+      cd - \
     && mkdir /etc/go-server \
     && unzip /tmp/go-server-${VERSION}.zip -d /tmp \
     && cd /tmp; echo "${SHACHECK}  go-server-${VERSION}.zip" | sha256sum -c - | grep OK; cd /\

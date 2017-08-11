@@ -27,7 +27,9 @@ RUN set -x \
         curl \
         bash \
         git \
-    && curl -sSL https://download.go.cd/binaries/${VERSION}/generic/go-agent-${VERSION}.zip > /tmp/go-agent-${VERSION}.zip \
+    && cd /tmp;\
+      curl -sSLO https://download.go.cd/binaries/${VERSION}/generic/go-agent-${VERSION}.zip;\
+      cd - \
     && mkdir /etc/go-agent \
     && unzip /tmp/go-agent-${VERSION}.zip -d /tmp \
     && cd /tmp; echo "${SHACHECK}  go-agent-${VERSION}.zip" | sha256sum -c - | grep OK; cd / \
