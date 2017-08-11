@@ -5,7 +5,7 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
-ENV GOCD_VERSION=${VERSION:0:6} \
+ENV GOCD_VERSION="17.8.0-5277" \
     SHACHECK="6764cd8c3f13824f892140464d1d50b753d9c1f3782ae38586303d59e296294e" \
     AGPORT=8154 \
     SRVPORT=8153
@@ -29,11 +29,11 @@ RUN set -x \
         curl \
         bash \
         git \
-    && curl -sSL -o /tmp/go-server.zip https://download.go.cd/binaries/${VERSION}/generic/go-server-${VERSION}.zip \
+    && curl -sSL -o /tmp/go-server.zip https://download.go.cd/binaries/${GOCD_VERSION}/generic/go-server-${GOCD_VERSION}.zip \
     && mkdir /etc/go-server \
     && unzip /tmp/go-server.zip -d /tmp \
     && cd /tmp; echo "${SHACHECK}  go-server.zip" | sha256sum -c - | grep OK; cd /\
-    && cp -vr /tmp/go-server-${GOCD_VERSION}/* /etc/go-server \
+    && cp -vr /tmp/go-server-${GOCD_VERSION:0:6}/* /etc/go-server \
     && rm -rfv /tmp/*
 EXPOSE ${AGPORT} ${SRVPORT}
 CMD ["/etc/go-server/server.sh"]

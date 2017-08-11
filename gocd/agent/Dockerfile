@@ -5,7 +5,7 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
-ENV GOCD_VERSION=${VERSION:0:6} \
+ENV GOCD_VERSION="17.8.0-5277" \
     SHACHECK="4c9c220240ee42a189c787c1bd967f36c9d2e63f75fb4019f3f3cc409f4db733"
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
@@ -27,10 +27,10 @@ RUN set -x \
         curl \
         bash \
         git \
-    && curl -sSL -o /tmp/go-agent.zip https://download.go.cd/binaries/${VERSION}/generic/go-agent-${VERSION}.zip \
+    && curl -sSL -o /tmp/go-agent.zip https://download.go.cd/binaries/${GOCD_VERSION}/generic/go-agent-${GOCD_VERSION}.zip \
     && mkdir /etc/go-agent \
     && unzip /tmp/go-agent.zip -d /tmp \
     && cd /tmp; echo "${SHACHECK}  go-agent.zip" | sha256sum -c - | grep OK; cd - \
-    && cp -vr /tmp/go-agent-${GOCD_VERSION}/* /etc/go-agent \
+    && cp -vr /tmp/go-agent-${GOCD_VERSION:0:6}/* /etc/go-agent \
     && rm -rfv /tmp/*
 CMD ["/etc/go-agent/agent.sh"]
