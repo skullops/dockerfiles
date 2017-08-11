@@ -2,10 +2,10 @@ FROM wizdevops/java:8-alpine
 MAINTAINER Daniel Andrei Minca <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE
-ARG VERSION=${VERSION:-"17.8.0-5277"}
+ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
-ENV GOCD_VERSION="17.8.0" \
+ENV GOCD_VERSION=${VERSION:0:6} \
     SHACHECK="6764cd8c3f13824f892140464d1d50b753d9c1f3782ae38586303d59e296294e" \
     AGPORT=8154 \
     SRVPORT=8153
@@ -29,12 +29,10 @@ RUN set -x \
         curl \
         bash \
         git \
-    && cd /tmp;\
-      curl -sSLO https://download.go.cd/binaries/${VERSION}/generic/go-server-${VERSION}.zip;\
-      cd - \
+    && curl -sSL -o /tmp/go-server.zip https://download.go.cd/binaries/${VERSION}/generic/go-server-${VERSION}.zip \
     && mkdir /etc/go-server \
-    && unzip /tmp/go-server-${VERSION}.zip -d /tmp \
-    && cd /tmp; echo "${SHACHECK}  go-server-${VERSION}.zip" | sha256sum -c - | grep OK; cd /\
+    && unzip /tmp/go-server.zip -d /tmp \
+    && cd /tmp; echo "${SHACHECK}  go-server.zip" | sha256sum -c - | grep OK; cd /\
     && cp -vr /tmp/go-server-${GOCD_VERSION}/* /etc/go-server \
     && rm -rfv /tmp/*
 EXPOSE ${AGPORT} ${SRVPORT}
