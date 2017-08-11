@@ -66,11 +66,11 @@
         - { context: ./gocd/agent,
             image: "{{ docker_organization }}/gocdagent",
             tag: latest,
-            version: 16.11.0-4185 }
+            version: 17.8.0-5277 }
         - { context: ./gocd/server,
             image: "{{ docker_organization }}/gocdserver",
             tag: latest,
-            version: 16.11.0-4185 }
+            version: 17.8.0-5277 }
         - { context: ./monit,
             image: "{{ docker_organization }}/monit",
             tag: latest,
