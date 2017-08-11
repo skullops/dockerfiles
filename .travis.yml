@@ -29,4 +29,4 @@ install:
 
 script:
   - ansible-playbook playbook.yml --syntax-check
-  - ansible-playbook playbook.yml
+  - travis_wait 60 ansible-playbook playbook.yml
