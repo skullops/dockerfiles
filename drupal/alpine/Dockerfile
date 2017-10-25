@@ -1,5 +1,4 @@
 FROM wizdevops/alpine
-MAINTAINER Minca Daniel Andrei <mandrei17@gmail.com>
 # Metadata params
 ARG BUILD_DATE
 ARG VERSION
@@ -20,7 +19,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.cmd.devel='docker run --rm -ti wizdevops/drupal:8-alpine ash' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
-      io.github.dminca.license="GPLv3"
+      io.github.dminca.license="GPLv3" \
+      MAINTAINER="Minca Daniel Andrei <mandrei17@gmail.com>"
 RUN set -x \
   && apk add --update --no-cache \
 		supervisor \
