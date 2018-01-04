@@ -20,9 +20,11 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.cmd='docker run --rm wizdevops/java:8-alpine java -version' \
       org.label-schema.docker.cmd.devel='docker run --rm -ti wizdevops/java:8-alpine ash' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
-      io.github.dminca.docker.dockerfile="/Dockerfile" \
+      io.github.dminca.docker.dockerfile="java/Dockerfile" \
       io.github.dminca.license="GPLv3" \
-      MAINTAINER="Daniel Andrei Minca <dminca@protonmail.com>"
+      io.github.repository="https://github.com/anapsix/docker-alpine-java" \
+      MAINTAINER="Anastas Dancha <anapsix@random.io>" \
+      COMAINTAINER="Daniel Andrei Minca <dminca@protonmail.com>"
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
     JAVA_VERSION_MINOR=152 \
