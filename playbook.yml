@@ -7,7 +7,7 @@
     - name: install docker-py
       become: true
       become_method: sudo
-      pip: 
+      pip:
         name: docker-py
         state: present
   tasks:
@@ -38,7 +38,7 @@
         - { context: ./base_alpine,
             image: "{{ docker_organization }}/alpine",
             tag: latest,
-            version: 1.0.2 }
+            version: 2.0.0 }
         - { context: ./python/3,
             image: "{{ docker_organization }}/python",
             tag: 3-alpine,
@@ -50,7 +50,7 @@
         - { context: ./drupal/alpine,
             image: "{{ docker_organization }}/drupal",
             tag: 8-alpine,
-            version: 1.3.0 }
+            version: 2.0.0 }
         - { context: ./drupal/debian,
             image: "{{ docker_organization }}/drupal",
             tag: 8-debian,
@@ -91,4 +91,3 @@
             image: "{{ docker_organization }}/ansible",
             tag: latest,
             version: 1.1.0 }
-
