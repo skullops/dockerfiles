@@ -12,6 +12,7 @@ organization:
 | `wizdevops/python`       | `2.7-alpine` |
 | `wizdevops/python`       | `3-alpine`   |
 | `wizdevops/drupal`       | `8-alpine`   |
+| `wizdevops/drupal`       | `8-volume`   |
 | `wizdevops/drupal`       | `8-debian`   |
 | `wizdevops/alpine`       | `latest`     |
 | `wizdevops/packer`       | `latest`     |
