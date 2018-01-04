@@ -44,17 +44,32 @@ RUN set -x \
     php7-ssh2 \
     php7-phar \
     php7-zlib \
+    php7-iconv \
+    php7-mbstring \
+    php7-simplexml \
+    php7-tokenizer \
+    php7-xmlwriter \
+    curl \
     tar \
+    git \
+    postgresql-client \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
   && mkdir -p /var/www/html \
-  && chown -R nginx:nginx /var/www/html \
+  && chown -R nobody:nogroup /var/www/html \
   && sed -i 's/memory_limit = .*/memory_limit = 768M/' /etc/php7/php.ini \
   && sed -i 's/post_max_size = .*/post_max_size = 50M/' /etc/php7/php.ini \
   && echo 'date.timezone = "Europe/Bucharest"' >> /etc/php7/php.ini \
-  && sed -i '/^user/c \user = nginx' /etc/php7/php-fpm.conf \
-  && sed -i '/^group/c \group = nginx' /etc/php7/php-fpm.conf \
-  && sed -i 's/^listen.allowed_clients/;listen.allowed_clients/' /etc/php7/php-fpm.conf
+  && sed -i '/^user/c \user = nobody' /etc/php7/php-fpm.conf \
+  && sed -i '/^group/c \group = nogroup' /etc/php7/php-fpm.conf \
+  && sed -i 's/^listen.allowed_clients/;listen.allowed_clients/' /etc/php7/php-fpm.conf \
+  # install Drush
+  && wget -O drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.5.0/drush.phar \
+  && chmod +x drush.phar \
+  && mv drush.phar /usr/local/bin/drush \
+  && drush self-update \
+  # install composer
+  && curl -sS https://getcomposer.org/installer | /usr/bin/php7 -- --install-dir=/usr/bin --filename=composer
 RUN set -x \
   && rm -fv /usr/bin/php \
   && ln -s /usr/bin/php7 /usr/bin/php
