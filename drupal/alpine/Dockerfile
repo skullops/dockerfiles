@@ -56,7 +56,9 @@ RUN set -x \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
   && mkdir -p /var/www/html \
-  && chown -R nobody:nogroup /var/www/html \
+  && chown -R nobody:nogroup \
+    /var/www/html \
+    /var/tmp/nginx \
   && sed -i 's/memory_limit = .*/memory_limit = 768M/' /etc/php7/php.ini \
   && sed -i 's/post_max_size = .*/post_max_size = 50M/' /etc/php7/php.ini \
   && echo 'date.timezone = "Europe/Bucharest"' >> /etc/php7/php.ini \
