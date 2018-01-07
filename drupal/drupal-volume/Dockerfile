@@ -41,5 +41,4 @@ RUN set -x \
       /var/www/html/sites/default \
       /var/www/html/themes \
       /var/www/html/modules
-USER nobody
 VOLUME /var/www/html
