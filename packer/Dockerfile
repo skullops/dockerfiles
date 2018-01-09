@@ -2,7 +2,6 @@
 # INSTALL PACKER BY HASHICORP
 # -----------------------------------------------------------------------------
 FROM wizdevops/alpine
-MAINTAINER Daniel Andrei Minca <@dminca>
 # Metadata params
 ARG BUILD_DATE
 ARG VERSION
@@ -24,7 +23,8 @@ source configuration' \
       org.label-schema.docker.cmd.devel='docker run --rm -ti wizdevops/packer ash' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.dminca.docker.dockerfile="/Dockerfile" \
-      io.github.dminca.license="GPLv3"
+      io.github.dminca.license="GPLv3" \
+      MAINTAINER="Daniel Andrei Minca <@dminca>"
 RUN set -x \
       && mkdir /tmp/packer \
       && cd /tmp/packer \
@@ -42,4 +42,4 @@ RUN set -x \
       && rm -rf /var/cache/apk/* \
       && rm -rf /tmp/packer
 
-ENTRYPOINT ["packer"]
+CMD ["packer"]
